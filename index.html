@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/ExpantaNum.js"></script>
+    <script src="js/saves.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/v.js"></script>
+
+    <title>Incremental Numbers</title>
+</head>
+<body onload="loadGame()">
+    <div id='app' style='display: none'>
+        <div v-if="player.numbers.lt(100)">
+            <br>You have {{ format(player.numbers, 0) }} (+{{ format(FORMS.getGain(), 0) }}/sec) points.<br><br>
+            <button onclick="FORMS.buy()">Upgrade points gain by 2x<br>Cost: {{ format(FORMS.getCost(), 0) }} points.</button>
+        </div><div v-if="player.numbers.gte(100)">
+            <div v-if="player.upgrades.lte(0)">
+                <div v-if = "110 > player.time">
+                    <img src="https://m.media-amazon.com/images/I/51-G3tQVdfL._AC_SS450_.jpg"><br>
+                    Congratulation, you passed game without upgrades! Try with upgardes!
+                </div><div v-if = "player.time >= 110 && 115 > player.time">
+                    <img src="https://i.pinimg.com/474x/73/76/21/73762125cfee64f2b17953dbab577267--funny-smiley-classroom-games.jpg"><br>
+                    Hmmm, i waited... But what's cost?
+                </div><div v-if = "player.time >= 115 && 117 > player.time">
+                    <img src="https://www.meme-arsenal.com/memes/1d131742c292c1c6a9c3da1db7598df3.jpg"><br>
+                    Oooh, did you fell communism?
+                </div><div v-if = "player.time >= 117 && 117.5 > player.time">
+                    <img src="https://media.istockphoto.com/photos/oh-no-picture-id471379275"><br>
+                    Ouch?!
+                </div><div v-if = "player.time >= 117.5 && 122 > player.time">
+                    <img src="https://media.tenor.com/images/d2ac8bba6c896b13c6316baf4927a349/tenor.gif"><br>
+                    Don't worry, i knew you cannot believe my style...
+                </div><div v-if = "player.time >= 122 && 122.5 > player.time">
+                    <img src="https://i.imgur.com/mqsLYl3.jpg"><br>
+                    Seriously?
+                </div><div v-if = "player.time >= 122.5">
+                    <img src="https://media.istockphoto.com/photos/get-out-picture-id182456141?s=612x612"><br>
+                    STOP TIME, FINISH MY GAME!<br>
+                    (just kidding, thanks for playing!)
+                </div>
+            </div><div v-if="player.upgrades.gte(1)">
+                <img v-if="player.roll == 1" style='width: 100%; height: 100%' src="https://media.tenor.com/images/5065145661f6411e4155628cd9942961/tenor.gif">
+                <img v-if="player.roll == 2" style='width: 100%; height: 100%' src="https://i1.sndcdn.com/artworks-SDP95erPKKyVHykD-XyfUnw-t500x500.jpg">
+                <img v-if="player.roll == 3" style='width: 100%; height: 100%' src="https://i.ytimg.com/vi/Q0ggEj4x2M0/maxresdefault.jpg">
+                <img v-if="player.roll == 4" style='width: 100%; height: 100%' src="https://i.ytimg.com/vi/-nk8eY2GRFo/hqdefault.jpg">
+                <img v-if="player.roll == 5" style='width: 100%; height: 100%' src="https://play-lh.googleusercontent.com/X0RhplvWblWHHz8XG2RBCIEGwTR-Cq2X9aR3hZN-PMOjbGs3WGKu06FCFJ3U7e0POA=s200">
+                <img v-if="player.roll == 6" style='width: 100%; height: 100%' src="https://i.ytimg.com/vi/5K2J8SWxU-E/maxresdefault.jpg">
+            </div>
+        </div>
+        <div style='display:none' >{{ player.time }}</div>
+    </div>
+</body>
+</html>
